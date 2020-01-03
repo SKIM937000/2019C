@@ -1,0 +1,845 @@
+1.输入a,b两个整数，按先大后小输出，再输出a,b（原值不变）
+
+```
+
+//StudybarCommentBegin
+#include <stdio.h>
+void main()
+{int a,b,t;
+int *p1,*p2,*p;
+p1=&a;
+p2=&b;
+scanf("%d%d",&a,&b);
+//StudybarCommentEnd
+if(a<b)
+{
+	p=p1;
+	p1=p2;
+	p2=p;
+	
+	
+}
+//StudybarCommentBegin
+printf("%d %d\n",*p1,*p2);
+printf("%d %d",a,b);
+}
+//StudybarCommentEnd
+```
+2.输入两个数a,b，先按从大到小的顺序输出，再输出a,b。(原值改变)
+
+```
+//StudybarCommentBegin
+#include <stdio.h>
+void main()
+{int a,b,t;
+int *p1,*p2,*p;
+p1=&a;
+p2=&b;
+scanf("%d%d",&a,&b);
+//StudybarCommentEnd
+if((*p1)<(*p2))
+{ 
+	t=*p1;
+	*p1=*p2;
+	*p2=t;
+
+}
+//StudybarCommentBegin
+printf("%d %d\n",*p1,*p2);
+printf("%d %d",a,b);
+}
+//StudybarCommentEnd
+```
+3.用指针实现数组元素的输入与输出
+
+```
+# include <stdio.h>
+int main()
+{
+	int s[5];
+ 	int *p;
+	for(p=s;p<s+5;p++)
+	{scanf("%d",p);
+	}
+	for(p=s;p<s+5;p++)
+	{printf("%d",*p);	printf(" ");}
+}
+```
+4.在a数组中查找与x 值相同的元素的所在位置,用指针实现。
+```
+ 
+main()
+{int a[6],x,i;
+for (i=1; i<=5; i++) scanf("%d",a+i);   
+scanf("%d", &x);
+*a=x;   i=5;    
+while (x!=*(a+i))
+i--;
+if (i>0 ) printf("%d's position is: %d",x,i);
+else     printf("%d Not been found!",x);
+}
+```
+5.说明：回文指的是一个字符串正序读和反序读相同，如level
+```
+#include <stdio.h>
+#include <string.h>
+main()
+{ char s[81],*p1,*p2;
+  int n;
+  gets(s);
+  n=strlen(s);
+  p1=s;
+  p2=p1+n-1;
+  while (p1<p2)
+     { if (*p1!=*p2) break;
+       else { p1++;p2--;}
+  }
+  if (p1<p2) printf("No");
+  else printf("Yes");
+}
+```
+6.输入一行文字，找出其中大写字母、小写字母、空格、数字及其它字符各有多少？
+
+```
+//StudybarCommentBegin
+#include <stdio.h>
+#include <string.h>
+void main()
+{int upper=0,lower=0,digit=0,space=0,other=0,i=0;
+char  *p,s[20];
+
+//StudybarCommentEnd
+
+int n;
+gets(s);n=strlen(s);
+
+p=s;
+while(i<n)
+{
+	if(*p>='A'&&*p<='Z')
+		upper++;
+	else 
+	{
+		if(*p>='a'&&*p<='z')
+	lower++;
+		else 
+	{	if(*p>='0'&&*p<='9')
+	digit++;
+	{
+		if(*p==' ')
+	space++;
+		
+	}
+	}
+	}
+	i++;
+	p++;
+}
+other=n-upper-lower-digit-space;
+//printf("%d",n);
+printf("upper=%d,lower=%d,space=%d,digit=%d,other=%d",upper,lower,space,digit,other);
+}
+```
+7.The max character is: u
+```
+//StudybarCommentBegin
+main()
+{ char max, *s="I am a student";
+  int n;
+  max=*s;
+//StudybarCommentEnd
+for(n=0;n<14;n++)
+  if(*(s+n)>max)
+	  max=*(s+n);
+  //StudybarCommentBegin
+ printf("The max character is: %c", max);
+}
+//StudybarCommentEnd
+```
+8.输入 ：I love
+
+you and me
+```
+	
+//StudybarCommentBegin
+#include <stdio.h>
+main()
+{
+  char *s1,*s2;
+//StudybarCommentEnd
+  int m,n,i;
+  char a[100],b[100];
+  gets(a);
+  gets(b);
+  s1=a;
+  s2=b;
+ 
+printf("%s",s1);
+printf(" ");
+printf("%s" ,s2);
+}
+```
+
+9.**实现交换两个数**
+
+```
+# include <stdio.h>
+void swap(int *x,int *y)
+{
+	int t;
+	t=*x;
+	*x=*y;
+	*y=t;
+
+}
+//StudybarCommentBegin
+int main( )
+{
+int a,b;
+scanf("%d%d",&a,&b);
+swap(&a,&b);
+printf("%d %d",a,b);
+return 0;
+}
+//StudybarCommentEnd
+```
+```
+//StudybarCommentBegin
+int main( )
+{
+int a,b;
+int *p1,*p2;
+void swap(int *p1,int *p2) ;
+scanf("%d%d",&a,&b);
+p1=&a;p2=&b;
+if(a<b) swap(p1,p2);
+printf("%d %d\n",*p1,*p2);
+printf("%d %d",a,b);
+return 0;
+}
+void swap(int *p1,int *p2)
+{int p;
+//StudybarCommentEnd
+p=*p1;
+*p1=*p2;
+*p2=p;
+}
+```
+```
+	
+//StudybarCommentBegin
+int main( )
+{
+int a,b;
+int *p1,*p2;
+void swap(int *p1,int *p2) ;
+scanf("%d%d",&a,&b);
+p1=&a;p2=&b;
+if(a<b) swap(p1,p2);
+printf("%d %d\n",*p1,*p2);
+printf("%d %d",a,b);
+return 0;
+}
+void swap(int *p1,int *p2)
+{int *p;
+//StudybarCommentEnd
+p=p1;
+p1=p2;
+p2=p;
+
+}
+```
+10.输入：三个整数
+
+输出：三个整数
+
+
+例如：
+
+输入：
+
+5 2 7
+
+输出：
+
+7 5 2
+
+
+注意：用 swap函数，其形参是指针
+
+void  swap(int *p1, int *p2)
+```
+	
+//StudybarCommentBegin
+int main( )
+{
+int a,b,c;
+int *p1,*p2,*p3;
+void swap(int *p1,int *p2) ;
+scanf("%d%d%d",&a,&b,&c);
+p1=&a;p2=&b;p3=&c;
+if(a<b) swap(p1,p2);
+if(a<c) swap(p1,p3);
+if(b<c) swap(p2,p3);
+printf("%d %d %d",a,b,c);
+return 0;
+}
+void  swap(int *p1, int *p2)
+{
+int p;
+p=*p1;
+*p1=*p2;
+*p2=p;
+}
+```
+11.将n个数按输入时顺序的逆序排列，用函数实现.
+```
+//StudybarCommentBegin
+#include <stdio.h>
+void main()
+{void sort(int *p,int m);
+int i,n;
+int *p,num[20];
+scanf("%d",&n);
+for(i=0;i<n;i++)
+  scanf("%d",&num[i]);
+p=&num[0];
+sort(p,n);
+for(i=0;i<n;i++)
+  printf("%d ",num[i]);
+}
+//StudybarCommentEnd
+void sort(int *p,int m)
+{
+	int i;
+	int t;
+	for(i=0;i<(m-1)/2;i++)
+	{
+		t=*(p+i);
+		*(p+i)=*(p+m-1-i);
+		*(p+m-1-i)=t;
+	}
+}
+
+```
+12.做一个排序函数,能把一个整数数组从小到大的排序。
+```
+# include <stdio.h>
+void Sort(int *a,int n)
+{
+	int i;
+	int j;
+	int t;
+	for(i=0;i<n;i++)
+	{	for(j=0;j<n;j++)
+	if(*(a+i)<*(a+j))
+	{
+		t=*(a+i);
+		*(a+i)=*(a+j);
+		*(a+j)=t;
+	}
+	}
+}
+//StudybarCommentBegin
+int main()
+{
+int a[10],i;
+for(i=0;i<10;i++)
+scanf("%d",&a[i]);
+Sort(a,10);
+for(i=0;i<10;i++)
+printf("%d ",a[i]);
+}
+//StudybarCommentEnd
+```
+13.进行逆序处理时要求使用指针方法（例如：原数列为2，4，6，8，10，12，14，16，18，20，m=4, n=5，
+
+即要求把从第4个数开始的5个数按逆序重新排列，则得到新数列为2，4，6，16，14，12，10，8，18，20。）
+
+输入10个整数和m, n；输出新的数组，数组元素之间以空格分隔。
+```
+//StudybarCommentBegin
+void main()
+{
+       int a[10];
+	int i, m, n;
+        void  method(int m,int n,int *a);
+	for ( i=0; i<10; i++ )
+		scanf( "%d", &a[i] );
+	scanf( "%d%d", &m, &n );
+
+       method(m,n,a);
+    
+	for( i=0;i<10;i++ )
+		printf( "%d ", a[i] );
+}
+
+//StudybarCommentEnd
+        void  method(int m,int n,int *a)
+		{
+			int i,j,t;
+			m=m-1;
+			for(i=0;i<n;i++)
+				for(j=0;j<n;j++)
+			if(*(a+m+i)>*(a+m+j))
+			{t=*(a+m+i);
+			*(a+m+i)=*(a+m+j);
+			*(a+m+j)=t;
+			}
+		}
+```
+14.编写一函数，求字符串长度，在main函数中输入字符串，并求其长度。
+```
+//StudybarCommentBegin
+#include <stdio.h>
+void main()
+{ int length(char *p);
+int len;
+char str[20];
+scanf("%s",str);
+len=length(str);
+printf("length of string is %d",len);
+}
+//StudybarCommentEnd
+ int length(char *p)
+ {
+	 int i=0;
+	 for(i;*p!='\0';p++)
+	 { i++;}
+	 return i;
+ }
+```
+15.函数原型为： int strcmp(char *p1,char *p2)
+
+设p1指向字符串s1，p2指向字符串s2。要求：当s1=s2时，返回值为0。当s1不等于s2时，返回它们
+
+二者的第一个不同字符的ASCII码差值（如“BOY”与“BAD”，第二字母不同，“O”与“A”之差为79-65=14）；即
+
+如果s1>s2，则输出正值；如果s1<s2，则输出负值。
+
+```
+//StudybarCommentBegin
+#include <stdio.h>
+void main()
+{int strcmp (char *p1,char *p2);
+//StudybarCommentEnd
+char *x,*y;
+char a[100],b[100];
+gets(a);
+gets(b);
+x=a;
+y=b;
+printf("%d",strcmp(x,y));
+}
+ int strcmp(char *p1,char *p2)
+ {
+	int i;
+	for(;*p1!='\0'||*p2!='\0';p1++,p2++)
+	{
+		if(*p1!=*p2)
+			break;
+	}
+	return (*p1-*p2);
+	
+ }
+ ```
+ 
+16.在主函数中给出两个字符数组，调用交换函数交换两个字符串，然后在主
+
+函数中分别输出交换前后的两个字符串，两个字符串用空格隔开。例如开始时：
+
+char a[20]=“hello”；
+
+char b[20]=”how are you”；
+
+交换前后a和b的内容分别是：
+
+hello how are you
+
+how are you hello
+```
+	
+//StudybarCommentBegin
+#include <stdio.h>
+void main()
+{
+	char a[20]="hello";
+	char b[20]="how are you";
+        void swap(char *p, char *q);
+	printf("%s %s\n", a, b );
+	swap(a,b);
+	printf("%s %s\n", a, b );
+}
+
+//StudybarCommentEnd
+void swap(char *p, char *q)
+{
+	char x;
+	for(;*p!='\0'||*q!=0;p++,q++)
+	{
+		x=*p;
+		*p=*q;
+		*q=x;
+	}
+}
+```
+17.编写一个字符替换函数。要求用函数replace将用户输入的字符串中的字符t/T都
+
+替换为e/E，并返回替换字符的个数。主函数中读入一个以回车结束的字符串，调用字
+
+符替换函数后输出替换后的字符串（以回车符结束），再输出替换字符的个数。
+```
+//StudybarCommentBegin
+#include <stdio.h>
+int Replace(char *src, char *dest);
+void main()
+{
+	int count;
+	char src[100], dest[100];
+	gets(src);
+	count = Replace( src, dest );
+	printf("%s\n%d", dest, count);
+}
+
+//StudybarCommentEnd
+int Replace(char *src, char *dest)
+{
+	int a=0;
+	for(;*src!='\0';src++,dest++)
+	{
+		if(*src=='t'||*src=='T')
+		{
+			a++;
+		}
+	if(*src!='t'&&*src!='T')
+	*dest=*src;
+	else
+		if(*src=='t')
+			*dest='e';
+		else
+			if(*src=='T')
+				*dest='E';
+	}
+	*dest='\0';
+	return a;
+}
+```
+18.要求:函数参数为指向字符串和要查找的子串的指针,返回值为该子串出现的次数。
+
+```
+	
+//StudybarCommentBegin
+#include <string.h>
+#include <stdio.h>
+void main()
+{
+	char s1[100], s2[100];
+        int CountSubstr( char *s1, char *s2 );
+	scanf("%s", s1);
+	scanf("%s", s2);
+	printf("%d", CountSubstr(s1, s2));
+}
+
+//StudybarCommentEnd
+        int CountSubstr( char *s1, char *s2 )
+		{
+		char d[100];
+		int i,j,n,x=0;n=strlen(s2);
+		for(i=0;*(s1+i)!='\0';i++)
+		{
+			for(j=0;j<n;j++)
+			{
+				d[j]=*(s1+i+j);
+			}
+			d[j]='\0';
+			j=0;
+			if(strcmp(s2,d)==0)
+				x++;
+		}
+		return x;
+		}
+
+```
+19.输入一个字符串，最大包含100个字符。写一个函数 ，将此字符串中的第m个字符开始的全部字符复制成为另一个字符串。
+
+函数定义为：
+
+`void copystr(char *p1, char *p2, int m)`
+```
+# include <stdio.h>
+# include <string.h>
+int main()
+{void copystr(char *p1, char *p2, int m);
+
+	char *p1,*p2;
+	char a[100],b[100];
+	int n;
+	gets(a);
+	scanf("%d",&n);
+	p1=a;
+	p2=b;
+	copystr(a,b,n);
+	puts(b);
+}
+void copystr(char *p1, char *p2, int m)
+{
+	int i;
+	for(i=m-1;*(p1+i)!='\0';i++)
+	{
+		*(p2)=*(p1+i);
+		p2++;
+	}
+	*p2='\0';
+}
+
+
+```
+
+20.在主函数中依次输入两个字符串s1, s2和整数n，然后在主函数中输出插入后的字符串。
+
+```
+//StudybarCommentBegin
+#include <stdio.h>
+char* insert(char* s1,char* s2,int n);
+void main() 
+{ 
+int n;
+char s1[100], s2[100];
+char *ss;
+scanf("%s", s1);
+scanf("%s", s2);
+scanf("%d", &n);
+ss=insert(s1,s2,n);
+printf("%s",ss);
+}
+//StudybarCommentEnd
+char* insert(char* s1,char* s2,int n)
+{
+	int i;
+	int t;
+	char s[100];
+	for(i=0,t=0;*(s2+i)!=0;i++)
+	{t++;}
+	for(i=0;*(s1+n+i-1)!='\0';i++)
+	{
+		*(s+i)=*(s1+n+i);
+		*(s+i+1)='\0';
+	}
+	for(i=0;*(s2+i)!='\0';i++)
+	{
+		*(s1+n+i)=*(s2+i);
+	}
+	for(i=0;*(s+i-1)!='\0';i++)
+	{
+		*(s1+n+i+t)=*(s+i);
+		*(s1+n+i+t+1)='\0';
+	}
+	return s1;
+}
+
+```
+21.主程序中读入三个数，最大值函数的参数为指针型，返回值为指针型。
+
+```
+int  max(int *a,int *b,int *c)
+{
+	if(*b>*a)
+		*a=*b;
+	if(*c>*a)
+		*a=*c;
+	return a;
+}
+//StudybarCommentBegin
+void main()
+{
+int a,b,c;
+int *p;
+scanf("%d %d %d",&a,&b,&c);
+p=max(&a,&b,&c);
+printf("%d",*p);
+
+}
+//StudybarCommentEnd
+```
+
+22.做一个排序函数,能把一个整数数组从小到大的排序。
+```
+# include <stdio.h>
+void sort(int a[],int n)
+
+{  int i,j,t;
+ for(i=0;i<n-1;i++)
+ {
+ for(j=i+1;j<n;j++)
+ {
+ if(*(a+i)>*(a+j))
+ {
+ t = *(a+i);
+*(a+i) = *(a+j);
+ *(a+j) = t;
+ }
+ }
+ }
+
+for(j=0;j<n;j++)
+  printf("%d ",a[j]);
+ }
+
+main()
+{
+ int n,i , *p ;
+int k[100];
+p=k;
+ scanf("%d",& n) ;
+ for(i=0;i<n;i++)
+ {
+ scanf("%d",(p+i));
+ }
+ sort(p,n);
+
+return 0;
+}
+
+```
+23.有一个已排好序的数组，要求按原来排序的规律将它插入数组中。
+
+输入（数据个数）： 4
+
+输入（原有数据）： 1 3 5 7
+
+输入（待插入数据）： 4
+
+输出： 1 3 4 5 7
+
+最后输出格式提示：输出数据之间用一个空格分开,最后一个元素后面也有
+
+一个空格（即最后输出语句用printf("%d ",a[i]）;）
+
+**用malloc函数**
+
+**下面这个是错的**
+
+```
+# include <stdio.h>
+int main()
+{
+	int *p;
+	int a[100];
+	int i;
+	int k,j;
+	int t=0;
+	p=a;
+	scanf("%d",&k);
+	p=(int *)malloc(k*sizeof(int));
+
+	for(i=0;i<k;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	scanf("%d",j);
+	p=a;
+	for(i=0;a[k]<j&&a[k+1]>j;p++)
+	{
+		i++;
+	}
+	
+	k=k+1;
+
+	for(k;k>i;k--)
+
+	{*(p+k)=*(p+k-1);}
+
+	a[i]=j;
+
+	for(i=0;i<k;i++)
+
+	{printf("%d ",a[i]);}
+}
+```
+24.n个人围成一圈，顺序排号，从第一个人开始报数（从1到3报数），
+
+凡报到3的人退出圈子，问最后留下的是原来第几号的那个人？
+
+25.已知数据文件IN.DAT中存有200个四位数，并已调用读函数readDat()把这些数存入数组a中，
+
+请考生编制一函数jsVal()，其功能是：如果四位数各位上的数字均是0或2或4或6或8，则统计出满足此
+
+条件的个数cnt，并把这些四位数按从大到小的顺序存入数组b中。最后main( )函数调用写函数writeDat()
+
+把结果cnt以及数组b中符合条件的四位数输出到OUT.DAT文件中。
+
+26.定义一个结构体变量（包括年、月、日），输入一个日期，计算该日在本年中是第几天？注意闰年。
+
+27.编写函数int strcmp1(char* str1,const char* str2)，实现判别两字符串str1和str2的大小。
+```
+	
+//StudybarCommentBegin
+#include <stdio.h>
+void main()
+{
+	int strcmp1(char* str1,const char* str2);
+	int result;
+	char a[20],b[20];
+	gets(a);
+	gets(b);
+	result=strcmp1(a,b);
+	if(result>0)  printf("\"%s\">\"%s\"\n",a,b);
+	if(result==0)  printf("\"%s\"=\"%s\"\n",a,b);
+	if(result<0)  printf("\"%s\"<\"%s\"\n",a,b);
+}
+//StudybarCommentEnd
+
+int strcmp1(char* str1,const char* str2)
+{
+for(;*str1==*str2;str1++,str2++)
+if(*str1==0)
+return 0;
+return *str1-*str2;
+}
+```
+
+28.编写程序，读入一行文本，其中以空格分隔为若干个单词，以‘.’结束。输出这行文本中每个单词的长度。
+
+这里的单词与语言无关，可以包括各种符号，比如“it's”算一个单词，长度为4。注意，行中可能出现连续的空格。
+
+输入格式: 输入在一行中给出，以‘.’结束，结尾的句号不能计算在最后一个单词的长度内。
+
+输出格式： 在一行中输出这行文本对应的单词的长度，每个长度之间以空格隔开，行末没有最后的空格。
+
+```
+# include <stdio.h>
+int main()
+{
+	char s[100];
+	int i;
+	int g=0;
+	int t=0;
+   	gets(s);
+	for(i=0;s[i]!='.';i++)
+	{t++;}
+	for(i=0;i<t+1;i++)
+	{
+	if(s[i]==' ')
+	{if((i-g)==0)
+	{printf("");g=i+1;}
+	else
+	{printf("%d ",i-g);
+	g=i+1;
+	}
+	}
+	if(s[i]=='.')
+	{	printf("%d",i-g);}
+	}
+}
+```
+29.试"直角三角形"、"等腰三角形"、"等腰直角三角形"、"一般三角形"、"不是三角形"等五种情况。
+
+提示：1）可按照下述流程图编写程序，注意变量flag的作用。
+
+2）判断两个浮点数是否相等时，由于存在精度误差，因此需使用两数相减绝对值小于某一精度范围，
+
+如0.00001，来判断。
+
+3）三条边输入以逗号分隔。
+
+
