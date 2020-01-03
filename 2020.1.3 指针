@@ -841,5 +841,70 @@ int main()
 如0.00001，来判断。
 
 3）三条边输入以逗号分隔。
+```
+# include <stdio.h>
+int main()
+{
+	int x,y,z;
+	float d;
+	float a,b,c;
+	scanf("%f,%f,%f",&a,&b,&c);
+	if ((a>b)&&(a>c))
+	{
+		if(b>c)
+	{
+ 		a=a;
+		b=b;
+	  	c=c;
+	}
+		if(c>b) 
+	{	
+		d=b;
+		b=c;
+		c=d;
+	}
+	}
+    if ((b>a)&&(b>c))
+  {
+		if(a>c)
+	{   d=b;
+		b=a;
+		a=d;
+	}
+		if(c>a)
+	{	d=a;
+		a=b;
+		b=c;
+		c=a;
+	}
+	}
+     if ((c>a)&&(c>b))
+	 {if(b>a)
+	 {d=a;a=c;c=d;}
+	else
+	{d=a;a=c;c=b;b=d;}}
+if(b+c<=a||a-c>=b)
+printf("不是三角形");
+else
+{
+	if(b-c<0.00001)
+	    x=1;
+	if(a*a==b*b+c*c)
+		y=1;
+	if(x==1&&y==1)
+		printf("等腰直角三角形");
+	else{
+	if(x==1)
+		printf("等腰三角形");else
+	{	if(y==1)
+	printf("直角三角形");else{
+	if(x!=1&&y!=1)
+		printf("一般三角形");
+	}}
+}}
+
+}
+```
+
 
 
